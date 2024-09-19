@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <sys/types.h>
+int main() {
+    char *cn="ls";
+char *argv[] = {"ls", "-l", NULL};
+printf("befor execvp()\n");
+pid_t p=fork();
+
+int stutas=0;
+if (p==0)
+{
+printf("child\n");
+int stutas=execvp(cn,argv);
+if (stutas==-1)
+
+{printf("incorrect ter\n");
+exit(1);
+}
+}
+else
+{
+printf("parent");
+printf("stustas:%d\n",stutas);
+wait(NULL);
+printf("Now this line will de ex");
+}
+}
+
